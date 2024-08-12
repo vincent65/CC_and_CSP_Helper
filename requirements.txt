@@ -2,6 +2,6 @@ requests-cache
 yfinance
 requests-ratelimiter
 pandas
-plotly
+plotly==5.23.0
 datetime
 requests

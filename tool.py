@@ -20,8 +20,8 @@ def get_yoy_price_data(ticker: str) :
     last_yr = dt.date.today() - dt.timedelta(days=365)
 
     last_year_price = yf.download("AAPL", start=last_yr, end=last_yr+dt.timedelta(days=7))
-    yoy = (get_last_price(ticker) - last_year_price['Close'][0]) / last_year_price['Close'][0]
-    return low, high, yoy, last_year_price['Close'][0]
+    yoy = (get_last_price(ticker) - last_year_price.iloc[0]['Close']) / last_year_price.iloc[0]['Close']
+    return low, high, yoy, last_year_price.iloc[0]['Close']
 
 def get_last_price(ticker: str):
     session = CachedLimiterSession(
