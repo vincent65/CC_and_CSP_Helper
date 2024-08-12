@@ -2,3 +2,6 @@ requests-cache
 yfinance
 requests-ratelimiter
 pandas
+plotly
+datetime
+requests
