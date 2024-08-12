@@ -13,14 +13,15 @@ def graph_data(ticker: str):
     
 def get_yoy_price_data(ticker: str) :
     dataframe = yf.Ticker(ticker)
-    dataframe = dataframe.history(period="1y")
+    df = dataframe.history(period="1y")
     
-    low = dataframe['High'].max()
-    high= dataframe['Low'].min()
+    low = df['High'].max()
+    high= df['Low'].min()
     
     last_yr = dt.date.today() - dt.timedelta(days=365)
 
-    last_year_price = yf.download("AAPL", start=last_yr, end=last_yr+dt.timedelta(days=7))
+    # last_year_price = yf.download("AAPL", start=last_yr, end=last_yr+dt.timedelta(days=7))
+    last_year_price = dataframe.history(start=last_yr, end=last_yr+dt.timedelta(days=7))
     yoy = (get_last_price(ticker) - last_year_price.iloc[0]['Close']) / last_year_price.iloc[0]['Close']
     return low, high, yoy, last_year_price.iloc[0]['Close']
 
