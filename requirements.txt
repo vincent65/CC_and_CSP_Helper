@@ -1,0 +1,4 @@
+requests-cache
+yfinance
+requests-ratelimiter
+pandas
