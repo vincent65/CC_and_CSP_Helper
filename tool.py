@@ -12,8 +12,9 @@ def graph_data(ticker: str):
     dataframe = yf.download('AAPL', period="1y", auto_adjust=True, prepost=True, threads=True)
     
 def get_yoy_price_data(ticker: str) :
-    dataframe = yf.download('AAPL', period="1y", auto_adjust=True, prepost=True, threads=True)
-
+    dataframe = yf.Ticker(ticker)
+    dataframe = dataframe.history(period="1y")
+    
     low = dataframe['High'].max()
     high= dataframe['Low'].min()
     
